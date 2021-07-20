@@ -19,6 +19,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $slock /run/setuid-programs/swaylock -f
 
 
 ### Output configuration
@@ -37,15 +38,15 @@ output * bg /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/share/backgro
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 180 'swaylock -f -c 000000' \
+         timeout 180 $slock \
          timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep $slock
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-bindsym $mod+Ctrl+q exec "swaylock -f -c 000000"
+bindsym $mod+Ctrl+q exec $slock
 
 # Pipewire
 exec --no-startup-id pipewire
