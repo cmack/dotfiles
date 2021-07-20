@@ -1,0 +1,12 @@
+color=192129
+show-keyboard-layout
+indicator-caps-lock
+indicator-radius=200
+indicator-thickness=50
+key-hl-color=649d8aee
+ring-color=243248
+ring-wrong-color=ff8683
+inside-color=090c10
+layout-bg-color=090c10
+layout-text-color=8898a9
+line-uses-inside
