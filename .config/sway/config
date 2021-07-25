@@ -55,6 +55,10 @@ exec --no-startup-id pipewire
 # start sway
 # dbus-launch --exit-with-session sway
 
+### Docking experience
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 ### Input configuration
 #
@@ -255,6 +259,9 @@ set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
     gsettings set $gnome-schema cursor-theme 'Hackneyed'
+
+    # ensure laptop screen is toggled off if in dock mode
+    ~/.config/sway/laptop-toggle.sh
 }
 
 # include /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/etc/sway/config.d/*
