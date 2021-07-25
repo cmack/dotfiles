@@ -4,7 +4,11 @@ indicator-caps-lock
 indicator-radius=200
 indicator-thickness=50
 key-hl-color=649d8aee
+bs-hl-color=a6a1ea
 ring-color=243248
+ring-caps-lock-color=fbf2c066
+caps-lock-bs-hl-color=649d8a66
+caps-lock-key-hl-color=e9b96e66
 ring-wrong-color=ff8683
 inside-color=090c10
 layout-bg-color=090c10
