@@ -1,0 +1,5 @@
+[user]
+	name = Charlie McMackin
+	email = charlie.mac@gmail.com
+[init]
+	defaultBranch = main
