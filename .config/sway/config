@@ -116,7 +116,7 @@ input "3141:30984:SONiX_USB_DEVICE" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-
+    bindsym $mod+Shift+BackSpace exec swaymsg exit
     bindsym XF86MonBrightnessDown exec light -U 2
     bindsym XF86MonBrightnessUp exec light -A 4
 #
@@ -196,6 +196,10 @@ input "3141:30984:SONiX_USB_DEVICE" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+    bindsym $mod+bracketright gaps horizontal all plus 1
+    bindsym $mod+Shift+bracketright gaps horizontal all minus 1
+    bindsym $mod+less gaps inner all minus 1
+    bindsym $mod+greater gaps inner all plus 1
 #
 # Scratchpad:
 #
