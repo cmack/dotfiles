@@ -20,7 +20,7 @@ set $term alacritty
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show run
-set $slock swaylock -f
+set $slock /run/setuid-programs/swaylock
 
 
 ### Output configuration
@@ -39,9 +39,11 @@ output * bg /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/share/backgro
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 180 $slock \
-         timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep $slock
+         timeout 180 $slock -f\
+         timeout 300 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+         after-resume ~/.config/sway/lid-toggle.sh \
+         before-sleep $slock -f
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -261,7 +263,7 @@ exec_always {
     gsettings set $gnome-schema cursor-theme 'Hackneyed'
 
     # ensure laptop screen is toggled off if in dock mode
-    ~/.config/sway/laptop-toggle.sh
+    ~/.config/sway/lid-toggle.sh
 }
 
 # include /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/etc/sway/config.d/*
