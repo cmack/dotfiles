@@ -1,0 +1,58 @@
+/* ::root{ */
+/*     --accent: #5291e2; */
+/*     --dark: #383C4A; */
+/*     --light: #7C818C; */
+/*     --ld: #404552; */
+/*     --dl: #4B5162 */
+/*     --white: white; */
+/* } */
+
+* {
+    font-family: monospace;
+}
+
+window {
+    color: #8898a9;
+    background-color: rgba(25, 33, 41, 0.92);
+    border: 2px solid #8898a9;
+    /* font-family: Adobe Source Code Pro; */
+}
+
+#input {
+    margin: 10px 0px;
+    border-radius: 0px;
+    border: none;
+    background: transparent;
+    /* color: white; */
+}
+
+#inner-box {
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 0px;
+    padding:5px;
+    background-color: transparent;
+
+}
+
+#scroll {
+}
+
+#text {
+    padding: 0.4em;
+    /* color: white; */
+}
+
+
+#entry:selected {
+    color: #729fcf;
+    background-color: transparent;
+    border: 0px;
+}
+
+#text:selected {
+    color: #729fcf;
+    background-color: transparent;
+}
