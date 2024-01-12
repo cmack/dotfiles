@@ -119,6 +119,10 @@ input "3141:30984:SONiX_USB_DEVICE" {
     bindsym $mod+Shift+BackSpace exec swaymsg exit
     bindsym XF86MonBrightnessDown exec light -U 2
     bindsym XF86MonBrightnessUp exec light -A 4
+
+    set $shot_format $(xdg-user-dir PICTURES)/$(date +'screenshot_%F-%T.png')
+    bindsym $mod+print exec --no-startup-id slurp | grim -g - $shot_format
+    bindsym $mod+Shift+print exec --no-startup-id grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $shot_format
 #
 # Moving around:
 #
