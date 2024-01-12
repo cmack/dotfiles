@@ -26,7 +26,7 @@ set $slock /run/setuid-programs/swaylock
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/share/backgrounds/sway/)
-output * bg /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg "~/.guix-home/profile/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png" fill
 #
 # Example configuration:
 #
