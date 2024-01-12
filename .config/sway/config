@@ -269,8 +269,11 @@ bar {
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema cursor-theme 'Hackneyed'
-
+    gsettings set $gnome-schema cursor-theme "Hackneyed"
+    gsettings set $gnome-schema gtk-theme "Adwaita-dark"
+    gsettings set $gnome-schema gtk-key-theme "Emacs"
+    gsettings set $gnome-schema gtk-application-prefer-dark-theme true
+    gsettings set $gnome-schema color-scheme prefer-dark
     # ensure laptop screen is toggled off if in dock mode
     ~/.config/sway/lid-toggle.sh
 }
