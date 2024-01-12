@@ -276,3 +276,7 @@ exec_always {
 }
 
 # include /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/etc/sway/config.d/*
+exec nm-applet --indicator
+
+# Desktop Notifications via DBus
+exec mako
