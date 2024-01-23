@@ -73,6 +73,13 @@ bindswitch --reload --locked lid:off output $laptop enable
 
 ### Input configuration
 #
+input * xkb_rules evdev
+
+input type:keyboard {
+  xkb_layout us
+  xkb_options ctrl:swapcaps
+}
+
 input type:touchpad {
 #  dwt enabled
    tap enabled
@@ -86,13 +93,7 @@ input type:pointer {
 
 # default layout
 input "1:1:AT_Translated_Set_2_keyboard" {
-   xkb_layout us
-   xkb_options ctrl:swapcaps
-}
-
-input "3141:30984:SONiX_USB_DEVICE" {
-   xkb_layout us
-   xkb_options ctrl:swapcaps
+   xkb_model thinkpad
 }
 
 #
