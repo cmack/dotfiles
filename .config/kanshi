@@ -1,0 +1,11 @@
+profile docked {
+        output eDP-1 disable
+        output "LG Electronics LG HDR WQHD 0x0005C71E" {
+                mode 3440x1440
+                position 1920,0
+        }
+}
+
+profile nomad {
+        output eDP-1 enable
+}
