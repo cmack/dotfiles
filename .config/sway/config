@@ -4,6 +4,10 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP \
+#     RTC_USE_PIPEWIRE SDL_VIDEODRIVER MOZ_ENABLE_WAYLAND CLUTTER_BACKEND \
+#     QT_QPA_PLATFORM ELM_ENGINE SWAYSOCK DISPLAY
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -132,8 +136,8 @@ input "65261:24656:Filco_Majestouch_TKL_\w_The_Pegasus_Hoof" {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+Shift+BackSpace exec swaymsg exit
-    bindsym XF86MonBrightnessDown exec light -U 2
-    bindsym XF86MonBrightnessUp exec light -A 4
+    bindsym XF86MonBrightnessDown exec --no-startup-id light -U 2
+    bindsym XF86MonBrightnessUp exec --no-startup-id light -A 4
 
     set $shot_format $(xdg-user-dir PICTURES)/$(date +'screenshot_%F-%T.png')
     set $record_format $(xdg-user-dir PICTURES)/$(date +'screen_recording_%F-%T.mp4')
