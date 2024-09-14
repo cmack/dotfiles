@@ -292,12 +292,10 @@ exec_always {
     gsettings set $gnome-schema gtk-key-theme "Emacs"
     gsettings set $gnome-schema gtk-application-prefer-dark-theme true
     gsettings set $gnome-schema color-scheme prefer-dark
-    # ensure laptop screen is toggled off if in dock mode
-    ~/.config/sway/lid-toggle.sh
 }
 
 # include /gnu/store/kkj3kbnfwa0r2zqadf202riw81hfanrq-sway-1.5.1/etc/sway/config.d/*
 exec nm-applet --indicator
-
+exec kanshi
 # Desktop Notifications via DBus
 exec mako
