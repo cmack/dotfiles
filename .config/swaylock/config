@@ -1,6 +1,7 @@
 color=192129
 show-keyboard-layout
 indicator-caps-lock
+indicator-idle-visible
 indicator-radius=200
 indicator-thickness=50
 key-hl-color=649d8aee
