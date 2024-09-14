@@ -21,7 +21,7 @@ set $term alacritty
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # set $menu wofi -M fuzzy -i --show run
 set $menu rofi -show drun -matching fuzzy
-set $slock swaylock -f
+
 
 
 ### Output configuration
@@ -44,13 +44,12 @@ output * bg "~/.guix-home/profile/share/backgrounds/sway/Sway_Wallpaper_Blue_204
 # before-sleep '$slock' \
 # after-resume '~/.config/sway/lid-toggle.sh'
 #
-
+set $slock 'swaylock -f'
 exec swayidle -w \
-     timeout 300 'exec $slock' \
-     timeout 300 'swaymsg "output * power off"' \
+     timeout 300 $slock \
+     timeout 301 'swaymsg "output * power off"' \
      resume 'swaymsg "output * power on"' \
-#     after-resume 'exec ~/.config/sway/lid-toggle.sh' \
-     before-sleep 'exec $slock'
+     before-sleep $slock
 
 
 #
