@@ -3,3 +3,5 @@
 	email = charlie.mac@gmail.com
 [init]
 	defaultBranch = main
+[core]
+	editor = emacs
