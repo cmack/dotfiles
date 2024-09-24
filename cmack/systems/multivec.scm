@@ -19,6 +19,15 @@
 
 (use-package-modules version-control emacs vim linux wm)
 
+(define %nonguix-substitutes-service
+  (simple-service 'add-nonguix-substitutes guix-service-type
+                  (guix-extension (substitute-urls (append (list
+                                                            "https://substitutes.nonguix.org")
+                                                    %default-substitute-urls))
+                                  (authorized-keys (append (list (plain-file
+                                                                  "nonguix.pub"
+                                                                  "(public-key (ecc (curve Ed25519) (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
+                                                    %default-authorized-guix-keys)))))
 (operating-system
   (kernel linux)
   ;; (kernel-arguments (append %default-kernel-arguments
@@ -59,17 +68,9 @@
   (services
    (append (modify-services %desktop-services
              (delete gdm-service-type)
-             (delete screen-locker-service-type)
-             (guix-service-type config =>
-                                (guix-configuration (inherit config)
-                                                    (substitute-urls (append (list
-                                                                              "https://substitutes.nonguix.org")
-                                                                      %default-substitute-urls))
-                                                    (authorized-keys (append (list
-                                                                              (local-file
-                                                                               "./non-guix.pub"))
-                                                                      %default-authorized-guix-keys)))))
-           (list (service openssh-service-type)
+             (delete screen-locker-service-type))
+           (list %nonguix-substitutes-service
+                 (service openssh-service-type)
                  ;; (udev-rules-service 'light backlight-service #:groups '("video"))
                  (service screen-locker-service-type
                           (screen-locker-configuration (name "swaylock")
