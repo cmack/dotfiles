@@ -136,15 +136,24 @@ input "65261:24656:Filco_Majestouch_TKL_\w_The_Pegasus_Hoof" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    # Exit sway without warning
     bindsym $mod+Shift+BackSpace exec swaymsg exit
+    # Brightness control
     bindsym XF86MonBrightnessDown exec --no-startup-id light -U 2
     bindsym XF86MonBrightnessUp exec --no-startup-id light -A 4
 
     set $shot_format $(xdg-user-dir PICTURES)/$(date +'screenshot_%F-%T.png')
     set $record_format $(xdg-user-dir PICTURES)/$(date +'screen_recording_%F-%T.mp4')
+    # Fullscreen screenshot
     bindsym $mod+print exec --no-startup-id slurp | grim -g - $shot_format
+
+    # Prompt select region screenshot
     bindsym $mod+Shift+print exec --no-startup-id grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $shot_format
+
+    # Start screen recording
     bindsym $mod+Ctrl+5 exec --no-startup-id timeout -s SIGINT 10m wf-recorder -g "$(slurp -d)" -f $record_format
+
+    # Stop screen recording
     bindsym $mod+Ctrl+0 exec killall -s SIGINT wf-recorder
 #
 # Moving around:
