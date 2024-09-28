@@ -48,6 +48,12 @@ output * bg "~/.guix-home/profile/share/backgrounds/sway/Sway_Wallpaper_Blue_204
 # before-sleep '$slock' \
 # after-resume '~/.config/sway/lid-toggle.sh'
 #
+
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
 set $slock 'swaylock -f'
 exec swayidle -w \
      timeout 300 $slock \
@@ -55,16 +61,11 @@ exec swayidle -w \
      resume 'swaymsg "output * power on"' \
      before-sleep $slock
 
+# Lock shortcut
+# swayidle immediately locks on SIGUSR1
+set $lock_now 'pkill -USR1 -nx swayidle'
+bindsym $mod+Ctrl+q exec $lock_now
 
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-bindsym $mod+Ctrl+q exec swayidle -w \
-        timeout 1 'exec $slock' \
-        timeout 10 'swaymsg "output * power off"' \
-        resume 'swaymsg "output * power on"; pkill -nx swayidle'
 
 # start sway
 # dbus-launch --exit-with-session sway
