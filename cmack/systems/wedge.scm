@@ -1,11 +1,12 @@
 ;; This is an operating system configuration generated
 ;; by the graphical installer.
 
-(use-modules (gnu)
-             (srfi srfi-1)
-             (gnu system nss)
-             (nongnu packages linux)
-             (nongnu system linux-initrd))
+(define-module (cmack systems wedge)
+  #:use-module (gnu)
+  #:use-module (srfi srfi-1)
+  #:use-module (gnu system nss)
+  #:use-module (nongnu packages linux)
+  #:use-module (nongnu system linux-initrd))
 
 (use-service-modules guix
                      cups
@@ -24,12 +25,11 @@
   (simple-service 'add-nonguix-substitutes guix-service-type
                   (guix-extension (substitute-urls (append (list
                                                             "https://substitutes.nonguix.org")
-                                                           %default-substitute-urls))
-                                  (authorized-keys (append (list
-                                                            (plain-file
-                                                             "nonguix.pub"
-                                                             "(public-key (ecc (curve Ed25519) (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
-                                                           %default-authorized-guix-keys)))))
+                                                    %default-substitute-urls))
+                                  (authorized-keys (append (list (plain-file
+                                                                  "nonguix.pub"
+                                                                  "(public-key (ecc (curve Ed25519) (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
+                                                    %default-authorized-guix-keys)))))
 
 (operating-system
   (kernel linux)
