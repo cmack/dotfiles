@@ -1,13 +1,15 @@
 ;; This is an operating system configuration generated
 ;; by the graphical installer.
 
-(use-modules (gnu)
-             (srfi srfi-1)
-             (gnu system nss)
-             (nongnu packages linux)
-             (nongnu system linux-initrd))
+(define-module (cmack systems multivec)
+  #:use-module (gnu)
+  #:use-module (srfi srfi-1)
+  #:use-module (gnu system nss)
+  #:use-module (nongnu packages linux)
+  #:use-module (nongnu system linux-initrd))
 
 (use-service-modules guix
+                     cups
                      desktop
                      networking
                      sound
@@ -83,6 +85,9 @@
                                                        (using-setuid? #f)))
                  (service containerd-service-type)
                  (service docker-service-type)
+                 (service sane-service-type)
+                 (service cups-service-type
+                          (cups-configuration (web-interface? #t)))
                  ;; (screen-locker-service kbd "vlock")
                  (udev-rules-service 'backlight light))))
 

@@ -7,14 +7,17 @@
   #:use-module (gnu home services sound)
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services xdg)
-  #:use-module (cmack home-services media))
+  #:use-module (cmack home-services media)
+  #:use-module (cmack home-services shell))
 
 (home-environment
   ;; Below is the list of packages that will show up in your
   ;; Home profile, under ~/.guix-home/profile.
   (packages (specifications->packages (list "adwaita-icon-theme"
                                        "alacritty"
+                                       "borg"
                                        "byobu"
+                                       "du-dust"
                                        "emacs-pgtk"
                                        "eza"
                                        "fd"
@@ -37,9 +40,11 @@
                                        "htop"
                                        "hunspell"
                                        "hunspell-dict-en-us"
+                                       "jq"
                                        ;; "kitty"
                                        "kanshi"
                                        "lsof"
+                                       "mako"
                                        "pavucontrol"
                                        "reptyr"
                                        "ripgrep"
@@ -65,9 +70,11 @@
                                        "vlc"
                                        "waybar"
                                        "wl-clipboard"
+                                       "wf-recorder"
                                        "xcursor-themes"
                                        "xdg-user-dirs"
                                        "xdg-utils"
+                                       "xournalpp"
                                        "steam")))
 
   ;; Below is the list of Home services.  To search for available
@@ -86,6 +93,7 @@
                                             ("ECORE_EVAS_ENGINE" . "wayland-egl")
                                             ("QT_QPA_PLATFORM" . "wayland-egl")
                                             ("_JAVA_AWT_WM_NONREPARENTING" . "1")))))
+         (service bash-fancy-prompt-service-type)
          (service home-xdg-user-directories-service-type)
          (service home-dbus-service-type)
          (service home-pipewire-service-type)
