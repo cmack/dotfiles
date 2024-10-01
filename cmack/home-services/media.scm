@@ -19,7 +19,7 @@
 # output_name=
 max_fps=30
 
-chooser_cmd=~a --dmenu
+chooser_cmd=~a --dmenu --placeholder='Choose Output to Screencast'
 chooser_type=dmenu"
                                                  #$(file-append fuzzel
                                                     "/bin/fuzzel"))))))
