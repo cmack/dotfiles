@@ -8,7 +8,8 @@
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services xdg)
   #:use-module (cmack home-services media)
-  #:use-module (cmack home-services shell))
+  #:use-module (cmack home-services shell)
+  #:use-module (cmack home-services input))
 
 (home-environment
   ;; Below is the list of packages that will show up in your
@@ -98,4 +99,5 @@
          (service home-dbus-service-type)
          (service home-pipewire-service-type)
          (service home-desktop-portal-xdg-service-type)
-         (service home-ssh-agent-service-type))))
+         (service home-ssh-agent-service-type)
+         (service cmack-japanese-input-service-type))))
