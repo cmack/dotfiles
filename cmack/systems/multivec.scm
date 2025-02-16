@@ -20,7 +20,7 @@
                      virtualization
                      admin)
 
-(use-package-modules version-control emacs vim linux wm)
+(use-package-modules version-control emacs vim linux wm radio)
 
 (define %nonguix-substitutes-service
   (simple-service 'add-nonguix-substitutes guix-service-type
@@ -33,9 +33,11 @@
                                                     %default-authorized-guix-keys)))))
 (operating-system
   (kernel linux)
-  ;; (kernel-arguments (append %default-kernel-arguments
-  ;; (list "ideapad_laptop.allow_v4_dytc=1"
-  ;; "acpi.backlight=video")))
+  (kernel-arguments (append %default-kernel-arguments
+                            (list "modprobe.blacklist=dvb_usb_rtl28xxu" ; Needed for rtl-sdr
+                                  ;; "ideapad_laptop.allow_v4_dytc=1"
+                                  ;; "acpi.backlight=video"
+                             )))
   (initrd microcode-initrd)
   (firmware (list linux-firmware realtek-firmware amdgpu-firmware))
   (locale "en_US.utf8")
@@ -57,7 +59,9 @@
                                           "kvm"
                                           "lp"
                                           "tty"
-                                          "docker"))) %base-user-accounts))
+                                          "docker"
+                                          "dialout"  ; rtl-sdr use
+                                          ))) %base-user-accounts))
 
   (packages (cons* git
                    emacs
@@ -66,6 +70,7 @@
                    sway
                    swayidle
                    swaylock
+                   rtl-sdr
                    %base-packages))
 
   (services
@@ -91,7 +96,8 @@
                  (service cups-service-type
                           (cups-configuration (web-interface? #t)))
                  ;; (screen-locker-service kbd "vlock")
-                 (udev-rules-service 'backlight light))))
+                 (udev-rules-service 'backlight light)
+                 (udev-rules-service 'rtl-sdr rtl-sdr))))
 
   (bootloader (bootloader-configuration
                 (bootloader grub-efi-bootloader)
