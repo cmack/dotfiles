@@ -309,4 +309,4 @@ exec nm-applet --indicator
 exec kanshi
 # Desktop Notifications via DBus
 exec mako
-exec fcitx5 -r
+exec fcitx5 -d --replace
