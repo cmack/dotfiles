@@ -1,12 +1,15 @@
 (define-module (cmack homes charlie)
   #:use-module (gnu packages)
+  #:use-module (gnu packages gnupg)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services desktop)
   #:use-module (gnu home services sound)
   #:use-module (gnu home services ssh)
+  #:use-module (gnu home services gnupg)
   #:use-module (gnu home services xdg)
+  #:use-module (guix gexp)
   #:use-module (cmack home-services media)
   #:use-module (cmack home-services shell)
   #:use-module (cmack home-services input))
@@ -34,6 +37,7 @@
                                        "fontconfig"
                                        "fuzzel"
                                        "gnome-themes-extra"
+                                       "gnupg"
                                        "grim"
                                        "gsettings-desktop-schemas"
                                        "hackneyed-x11-cursors"
@@ -47,6 +51,7 @@
                                        "lsof"
                                        "mako"
                                        "pavucontrol"
+                                       "pinentry-rofi"
                                        "reptyr"
                                        "ripgrep"
                                        "rofi-wayland"
@@ -82,23 +87,28 @@
   ;; services, run 'guix home search KEYWORD' in a terminal.
   (services
    (append (list (service home-bash-service-type
-                           (home-bash-configuration
-                            (environment-variables '(("XDG_CURRENT_DESKTOP" . "sway")
-                                                     ("XDG_SESSION_TYPE" . "wayland")
-                                                     ;; FIXME: Should be in feature-pipewire
-                                                     ("RTC_USE_PIPEWIRE" . "true")
-                                                     ("SDL_VIDEODRIVER" . "wayland")
-                                                     ("MOZ_ENABLE_WAYLAND" . "1")
-                                                     ("CLUTTER_BACKEND" . "wayland")
-                                                     ("ELM_ENGINE" . "wayland_egl")
-                                                     ("ECORE_EVAS_ENGINE" . "wayland-egl")
-                                                     ("QT_QPA_PLATFORM" . "wayland-egl")
-                                                     ("_JAVA_AWT_WM_NONREPARENTING" . "1")))))
-                  (service bash-fancy-prompt-service-type)
-                  (service home-xdg-user-directories-service-type)
-                  (service home-dbus-service-type)
-                  (service home-pipewire-service-type)
-                  (service home-desktop-portal-xdg-service-type)
-                  (service home-ssh-agent-service-type)
-                  (service cmack-japanese-input-service-type))
+                          (home-bash-configuration
+                           (environment-variables '(("XDG_CURRENT_DESKTOP" . "sway")
+                                                    ("XDG_SESSION_TYPE" . "wayland")
+                                                    ;; FIXME: Should be in feature-pipewire
+                                                    ("RTC_USE_PIPEWIRE" . "true")
+                                                    ("SDL_VIDEODRIVER" . "wayland")
+                                                    ("MOZ_ENABLE_WAYLAND" . "1")
+                                                    ("CLUTTER_BACKEND" . "wayland")
+                                                    ("ELM_ENGINE" . "wayland_egl")
+                                                    ("ECORE_EVAS_ENGINE" . "wayland-egl")
+                                                    ("QT_QPA_PLATFORM" . "wayland-egl")
+                                                    ("_JAVA_AWT_WM_NONREPARENTING" . "1")))))
+                 (service bash-fancy-prompt-service-type)
+                 (service home-xdg-user-directories-service-type)
+                 (service home-dbus-service-type)
+                 (service home-pipewire-service-type)
+                 (service home-desktop-portal-xdg-service-type)
+                 (service home-gpg-agent-service-type
+                          (home-gpg-agent-configuration (pinentry-program (file-append
+                                                                           pinentry-rofi
+                                                                           "/bin/pinentry-rofi"))
+                                                        (ssh-support? #t)))
+
+                 (service cmack-japanese-input-service-type))
            %base-home-services)))
