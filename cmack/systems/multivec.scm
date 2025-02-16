@@ -17,7 +17,8 @@
                      xorg
                      avahi
                      docker
-                     virtualization)
+                     virtualization
+                     admin)
 
 (use-package-modules version-control emacs vim linux wm)
 
@@ -83,6 +84,7 @@
                                                                               #f)
                                                        (using-pam? #t)
                                                        (using-setuid? #f)))
+                 (service file-database-service-type)
                  (service containerd-service-type)
                  (service docker-service-type)
                  (service sane-service-type)
