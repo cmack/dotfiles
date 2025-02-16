@@ -81,23 +81,24 @@
   ;; Below is the list of Home services.  To search for available
   ;; services, run 'guix home search KEYWORD' in a terminal.
   (services
-   (list (service home-bash-service-type
-                  (home-bash-configuration
-                   (environment-variables '(("XDG_CURRENT_DESKTOP" . "sway")
-                                            ("XDG_SESSION_TYPE" . "wayland")
-                                            ;; FIXME: Should be in feature-pipewire
-                                            ("RTC_USE_PIPEWIRE" . "true")
-                                            ("SDL_VIDEODRIVER" . "wayland")
-                                            ("MOZ_ENABLE_WAYLAND" . "1")
-                                            ("CLUTTER_BACKEND" . "wayland")
-                                            ("ELM_ENGINE" . "wayland_egl")
-                                            ("ECORE_EVAS_ENGINE" . "wayland-egl")
-                                            ("QT_QPA_PLATFORM" . "wayland-egl")
-                                            ("_JAVA_AWT_WM_NONREPARENTING" . "1")))))
-         (service bash-fancy-prompt-service-type)
-         (service home-xdg-user-directories-service-type)
-         (service home-dbus-service-type)
-         (service home-pipewire-service-type)
-         (service home-desktop-portal-xdg-service-type)
-         (service home-ssh-agent-service-type)
-         (service cmack-japanese-input-service-type))))
+   (append (list (service home-bash-service-type
+                           (home-bash-configuration
+                            (environment-variables '(("XDG_CURRENT_DESKTOP" . "sway")
+                                                     ("XDG_SESSION_TYPE" . "wayland")
+                                                     ;; FIXME: Should be in feature-pipewire
+                                                     ("RTC_USE_PIPEWIRE" . "true")
+                                                     ("SDL_VIDEODRIVER" . "wayland")
+                                                     ("MOZ_ENABLE_WAYLAND" . "1")
+                                                     ("CLUTTER_BACKEND" . "wayland")
+                                                     ("ELM_ENGINE" . "wayland_egl")
+                                                     ("ECORE_EVAS_ENGINE" . "wayland-egl")
+                                                     ("QT_QPA_PLATFORM" . "wayland-egl")
+                                                     ("_JAVA_AWT_WM_NONREPARENTING" . "1")))))
+                  (service bash-fancy-prompt-service-type)
+                  (service home-xdg-user-directories-service-type)
+                  (service home-dbus-service-type)
+                  (service home-pipewire-service-type)
+                  (service home-desktop-portal-xdg-service-type)
+                  (service home-ssh-agent-service-type)
+                  (service cmack-japanese-input-service-type))
+           %base-home-services)))
