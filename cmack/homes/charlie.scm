@@ -52,6 +52,7 @@
                                        "mako"
                                        "pavucontrol"
                                        "pinentry-rofi"
+                                       "pipewire" ;cli tools access
                                        "reptyr"
                                        "ripgrep"
                                        "rofi-wayland"
@@ -75,6 +76,7 @@
                                        "unzip"
                                        "vlc"
                                        "waybar"
+                                       "wireplumber" ;needed for cli tools
                                        "wl-clipboard"
                                        "wf-recorder"
                                        "xcursor-themes"
