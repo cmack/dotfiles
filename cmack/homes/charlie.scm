@@ -22,7 +22,7 @@
                                        "borg"
                                        "byobu"
                                        "du-dust"
-                                       "emacs-pgtk"
+                                       "emacs-next-pgtk"
                                        "eza"
                                        "fd"
                                        "firefox"
