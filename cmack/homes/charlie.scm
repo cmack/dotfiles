@@ -19,6 +19,7 @@
   ;; Home profile, under ~/.guix-home/profile.
   (packages (specifications->packages (list "adwaita-icon-theme"
                                        "alacritty"
+                                       "bind:utils"  ;for dig, nslookup,etc
                                        "borg"
                                        "byobu"
                                        "du-dust"
