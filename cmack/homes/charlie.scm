@@ -9,6 +9,7 @@
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services gnupg)
   #:use-module (gnu home services xdg)
+  #:use-module (gnu home services dotfiles)
   #:use-module (guix gexp)
   #:use-module (cmack home-services media)
   #:use-module (cmack home-services shell)
@@ -112,6 +113,9 @@
                                                                            pinentry-rofi
                                                                            "/bin/pinentry-rofi"))
                                                         (ssh-support? #t)))
+                 (service home-dotfiles-service-type
+                          (home-dotfiles-configuration (directories '("../../"))
+                                                       (excluded '("cmack/*"))))
 
                  (service cmack-japanese-input-service-type))
            %base-home-services)))
