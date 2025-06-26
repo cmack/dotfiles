@@ -115,7 +115,11 @@
                                                         (ssh-support? #t)))
                  (service home-dotfiles-service-type
                           (home-dotfiles-configuration (directories '("../../"))
-                                                       (excluded '("cmack/*"))))
+                                                       (excluded '("cmack/*"
+                                                                   ".*~"
+                                                                   ".*\\.swp"
+                                                                   "\\.git"
+                                                                   "\\.gitignore"))))
 
                  (service cmack-japanese-input-service-type))
            %base-home-services)))
