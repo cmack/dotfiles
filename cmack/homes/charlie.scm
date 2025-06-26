@@ -114,9 +114,8 @@
                                                                            "/bin/pinentry-rofi"))
                                                         (ssh-support? #t)))
                  (service home-dotfiles-service-type
-                          (home-dotfiles-configuration (directories '("../../"))
-                                                       (excluded '("cmack/*"
-                                                                   ".*~"
+                          (home-dotfiles-configuration (directories '("../../raw/"))
+                                                       (excluded '(".*~"
                                                                    ".*\\.swp"
                                                                    "\\.git"
                                                                    "\\.gitignore"))))
