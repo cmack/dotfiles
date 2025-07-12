@@ -20,7 +20,7 @@
   ;; Home profile, under ~/.guix-home/profile.
   (packages (specifications->packages (list "adwaita-icon-theme"
                                        "alacritty"
-                                       "bind:utils"  ;for dig, nslookup,etc
+                                       "bind:utils" ;for dig, nslookup,etc
                                        "borg"
                                        "byobu"
                                        "du-dust"
@@ -33,6 +33,7 @@
                                        "font-awesome"
                                        "font-google-material-design-icons"
                                        "font-google-noto"
+                                       "font-google-noto-emoji"
                                        "font-google-roboto"
                                        "font-ibm-plex"
                                        "font-ipa-ex"
@@ -67,6 +68,7 @@
                                        "swaybg"
                                        "swayidle"
                                        "tmux"
+                                       "torbrowser"
                                        "tree-sitter-css"
                                        "tree-sitter-javascript"
                                        "tree-sitter-julia"
