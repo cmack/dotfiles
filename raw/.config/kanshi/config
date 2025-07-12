@@ -1,20 +1,24 @@
+output "LG Electronics LG HDR WQHD 0x0005C71E" {
+       alias $LeftLGWide
+       mode 3440x1440
+       position 1920,0
+}
+
+output "LG Electronics LG HDR WQHD 0x01010101" {
+       alias $RightLGWide
+       mode 3440x1440
+       position 0,0
+}
+
 profile {
         output eDP-1 enable
 }
 
 profile docked {
         output eDP-1 disable
-        output "LG Electronics LG HDR WQHD 0x0005C71E" {
-               alias $LeftLGWide
-               mode 3440x1440
-               position 1920,0
-        }
+        output $LeftLGWide
 }
 
 profile workhome {
-        output "LG Electronics LG HDR WQHD 0x01010101" {
-               alias $RightLGWide
-               mode 3440x1440
-               position 0,0
-        }
+        output $RightLGWide
 }
