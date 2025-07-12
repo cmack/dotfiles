@@ -22,3 +22,8 @@ profile docked {
 profile workhome {
         output $RightLGWide
 }
+
+profile double-wide {
+        output $LeftLGWide position 0,0
+        output $RightLGWide position 1920,0
+}
