@@ -55,6 +55,7 @@
                                        "kanshi"
                                        "lsof"
                                        "mako"
+                                       "niri"
                                        "pavucontrol"
                                        "pinentry-rofi"
                                        "pipewire" ;cli tools access
