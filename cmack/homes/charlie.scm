@@ -21,6 +21,7 @@
   (packages (specifications->packages (list "adwaita-icon-theme"
                                        "alacritty"
                                        "bind:utils" ;for dig, nslookup,etc
+                                       "blender"
                                        "borg"
                                        "byobu"
                                        "du-dust"
@@ -39,6 +40,7 @@
                                        "font-ipa-ex"
                                        "fontconfig"
                                        "fuzzel"
+                                       "gimp"
                                        "gnome-themes-extra"
                                        "gnupg"
                                        "grim"
@@ -58,7 +60,7 @@
                                        "pipewire" ;cli tools access
                                        "reptyr"
                                        "ripgrep"
-                                       "rofi-wayland"
+                                       "rofi"
                                        "rsync"
                                        "shellcheck"
                                        "slurp"
@@ -87,7 +89,9 @@
                                        "xdg-user-dirs"
                                        "xdg-utils"
                                        "xournalpp"
-                                       "steam")))
+                                       "steam"
+                                       "zathura"
+                                       "zathura-pdf-mupdf")))
 
   ;; Below is the list of Home services.  To search for available
   ;; services, run 'guix home search KEYWORD' in a terminal.
