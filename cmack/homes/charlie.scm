@@ -10,6 +10,8 @@
   #:use-module (gnu home services gnupg)
   #:use-module (gnu home services xdg)
   #:use-module (gnu home services dotfiles)
+  #:use-module (gnu home services dict)
+  #:use-module (gnu services dict)
   #:use-module (guix gexp)
   #:use-module (cmack home-services media)
   #:use-module (cmack home-services shell)
@@ -25,6 +27,7 @@
                                        "borg"
                                        "byobu"
                                        "du-dust"
+                                       "dico"
                                        "emacs-next-pgtk"
                                        "eza"
                                        "fd"
@@ -40,6 +43,7 @@
                                        "font-ipa-ex"
                                        "fontconfig"
                                        "fuzzel"
+                                       "gcide" ;dictionary for dico
                                        "gimp"
                                        "gnome-themes-extra"
                                        "gnupg"
@@ -127,5 +131,9 @@
                                                                    "\\.git"
                                                                    "\\.gitignore"))))
 
-                 (service cmack-japanese-input-service-type))
+                 (service cmack-japanese-input-service-type)
+                 (service home-dicod-service-type
+                          (for-home
+                           (dicod-configuration
+                            (databases (list %dicod-database:gcide))))))
            %base-home-services)))
