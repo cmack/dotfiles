@@ -94,6 +94,7 @@
                                        "xdg-user-dirs"
                                        "xdg-utils"
                                        "xournalpp"
+                                       "xwayland-satellite"
                                        "steam"
                                        "zathura"
                                        "zathura-pdf-mupdf")))
