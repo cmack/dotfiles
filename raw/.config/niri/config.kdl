@@ -55,6 +55,39 @@ input {
                 // middle-emulation
         }
 
+
+    trackball {
+        // off
+        natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        // left-handed
+        // middle-emulation
+    }
+
+    tablet {
+        // off
+        map-to-output "eDP-1"
+        // left-handed
+        // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+    }
+
+    touch {
+        // off
+        map-to-output "eDP-1"
+        // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+    }
+
+        // disable-power-key-handling
+
+        // workspace-auto-back-and-forth
+
+        // mod-key "Super"
+        // mod-key-nested "Alt"
+
         // Uncomment this to make the mouse warp to the center of newly focused windows.
         // warp-mouse-to-focus
 
